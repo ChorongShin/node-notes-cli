@@ -8,7 +8,11 @@ if(process.argv[2] === 'read'){
   if (err){
     console.log(err);
   }
-  console.log(data);
+  const object = JSON.parse(data);
+
+  for (const property in object.notes){
+    console.log(`${property}: ${object.notes[property]}`)
+  }
 
 })
 }
