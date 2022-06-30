@@ -41,4 +41,20 @@ console.log('it/`s working')
       console.log(`${property}: ${data.notes[property]}`)
     }
 })
+} else if (process.argv[2] === 'delete'){
+  const noteId = process.argv[3];
+  delete data.notes[noteId];
+  const updatedData = JSON.stringify(data, null, 2);
+
+  fs.writeFile('data.json', updatedData, 'utf8', err => {
+    console.log('it/`s working')
+    if (err) {
+      console.log('error:', err)
+    }
+    for (const property in data.notes) {
+      console.log(`${property}: ${data.notes[property]}`)
+    }
+  })
+
+
 }
